@@ -15,21 +15,27 @@ class FormContents extends React.Component {
 
         this.name = React.createRef();
         this.color = React.createRef();
-
     }
 
-    formSubmission = (type) => {
+    formSubmission = (type, fadeType) => {
         if (type === 0) {
-            this.props.sendFormCallback(
-                this.props.activeForm,
-                this.name.current.value === "" ? "Anon" : this.name.current.value
-            );
+          this.props.sendFormCallback(
+              this.props.activeForm,
+              this.name.current.value === "" ? "Anon" : this.name.current.value
+          );
         }else if (type === 1) {
-            this.props.sendFormCallback(
-                this.props.activeForm, 
-                this.name.current.value === "" ? "Anon" : this.name.current.value,
-                this.color.current.value.toUpperCase()
-            );
+          this.props.sendFormCallback(
+              this.props.activeForm, 
+              this.name.current.value === "" ? "Anon" : this.name.current.value,
+              this.color.current.value.toUpperCase()
+          );
+        }else if (type === 2) {
+          this.props.sendFormCallback(
+            this.props.activeForm,
+            this.name.current.value === "" ? "Anon" : this.name.current.value,
+            null,
+            fadeType
+          )
         }
     }
 
@@ -39,7 +45,7 @@ class FormContents extends React.Component {
             case -2: return <p></p>
             case -1: return this.renderGenericForm();
             case 0: return this.renderColorPickerForm();
-            case 1: return this.renderGenericForm();
+            case 1: return this.renderFadeForm();
             case 2: return this.renderColorPickerForm();
             default: return <p>There has been an error</p>
         }
@@ -89,6 +95,35 @@ class FormContents extends React.Component {
                 </Row>
             </div>
         );
+    }
+
+    renderFadeForm() {
+      let index = 2;
+      return(
+        <div className="FormContents">
+            <Row>
+                <h6>{this.descriptions[index]}</h6>
+            </Row>
+            <Row>
+                Name: <input style={{margin: "0 1rem", width: "25%", color: "white"}} ref={this.name} type="text" placeholder="Anonymous" defaultValue=""/> 
+            </Row>
+            <Row>
+                Color: <input style={{margin: "0 1rem"}} ref={this.color} type="color" defaultValue="#FFFFFF"/> 
+            </Row>
+            <Row>
+            <Button style={{backgroundColor: "#10131a", borderStyle: "solid", borderWidth: "1px"}} 
+                    waves="green" 
+                    onClick={() => this.formSubmission(2, 0)}>
+                    Rainbow
+                </Button>
+                <Button style={{backgroundColor: "#10131a", borderStyle: "solid", borderWidth: "1px"}} 
+                    waves="green" 
+                    onClick={() => this.formSubmission(2, 1)}>
+                    Cool Colors
+                </Button>
+            </Row>
+        </div>
+    );
     }
 
     renderCompletedForm() {

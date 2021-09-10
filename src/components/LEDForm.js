@@ -21,7 +21,7 @@ class LEDForm extends React.Component {
         }
     }
 
-    sendForm = (mode, name, color) => {
+    sendForm = (mode, name, color = null, fadeType = null) => {
         this.setState({isLoading: true});
 
         if(color) { //Form with color
@@ -35,6 +35,17 @@ class LEDForm extends React.Component {
                     activeForm: -3
                 })
             );
+        }else if(fadeType) {
+          axios.post(this.apiDomain + "/enqueue/", {
+            mode: mode,
+            name: name,
+            type: fadeType,
+          }).then(() => {
+            this.setState({
+              isLoading: false,
+              activeForm: -3
+            })
+          })
         }else{ //Basic form with no other properties
             axios.post(this.apiDomain + "/enqueue/", {
                 mode: mode,
