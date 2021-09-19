@@ -1,5 +1,5 @@
 import React from 'react';
-import {Button, Row} from 'react-materialize';
+import {Button, Row, Box} from 'react-materialize';
 import '../css/FormContents.css'
 
 class FormContents extends React.Component {
@@ -108,19 +108,21 @@ class FormContents extends React.Component {
                 Name: <input style={{margin: "0 1rem", width: "25%", color: "white"}} ref={this.name} type="text" placeholder="Anonymous" defaultValue=""/> 
             </Row>
             <Row>
-                Color: <input style={{margin: "0 1rem"}} ref={this.color} type="color" defaultValue="#FFFFFF"/> 
-            </Row>
-            <Row>
-            <Button style={{backgroundColor: "#10131a", borderStyle: "solid", borderWidth: "1px"}} 
-                    waves="green" 
-                    onClick={() => this.formSubmission(2, 0)}>
-                    Rainbow
-                </Button>
-                <Button style={{backgroundColor: "#10131a", borderStyle: "solid", borderWidth: "1px"}} 
-                    waves="green" 
-                    onClick={() => this.formSubmission(2, 1)}>
-                    Cool Colors
-                </Button>
+              <Button sx={{ m: 0.5 }} style={{backgroundColor: "#10131a", borderStyle: "solid", borderWidth: "1px"}} 
+                waves="green" 
+                onClick={() => this.formSubmission(2, 0)}>
+                Full Rainbow
+              </Button>
+              <Button sx={{ m: 0.5 }} style={{backgroundColor: "#10131a", borderStyle: "solid", borderWidth: "1px"}} 
+                waves="green" 
+                onClick={() => this.formSubmission(2, 1)}>
+                Cool Fade
+              </Button>
+              <Button  style={{backgroundColor: "#10131a", borderStyle: "solid", borderWidth: "1px"}} 
+                waves="green" 
+                onClick={() => this.formSubmission(2, 2)}>
+                Warm Fade
+              </Button>
             </Row>
         </div>
     );
