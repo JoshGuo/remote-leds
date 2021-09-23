@@ -33,7 +33,6 @@ class Home extends React.Component {
 
     getCurrentMode = () => {
         axios.get(this.apiDomain).then((res) => {
-            console.log(res.data.currentMode);
             this.setState({
                 loadingCurr: false,
                 currentMode: res.data.currentMode

@@ -49,7 +49,8 @@ class LEDForm extends React.Component {
         }else{ //Basic form with no other properties
             axios.post(this.apiDomain + "/enqueue/", {
                 mode: mode,
-                name: name
+                name: name,
+                color: "#000000"
             }).then(() => 
                 this.setState({
                     isLoading: false,

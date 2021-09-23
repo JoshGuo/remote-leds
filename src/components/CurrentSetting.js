@@ -33,7 +33,7 @@ class CurrentSetting extends React.Component {
         return (
             <div>
                 <div>Mode: Off</div>
-                <div>Sender: {this.props.setting.name}</div>
+                <div>Message: {this.props.setting.name}</div>
             </div>
         );
     }
@@ -46,7 +46,7 @@ class CurrentSetting extends React.Component {
                     Color: 
                     <div style={{margin: "0 5px", width: "15px", height: "15px", display: "inline-block", backgroundColor: this.props.setting.color, borderColor: "white", borderStyle: "solid", borderWidth: "1px"}}></div>
                 </div>
-                <div>Sender: {this.props.setting.name}</div>
+                <div>Message: {this.props.setting.name}</div>
             </div>
         )
     }
@@ -63,12 +63,11 @@ class CurrentSetting extends React.Component {
     renderFlash = () => {
         return (
             <div>
-                <div><u>Mode</u>: Flashing</div>
+                <div>Mode: Flashing</div>
                 <div style={{display: "inline-block"}}>
-                    <u>Color</u>: 
                     <div style={{margin: "0 5px", width: "15px", height: "15px", display: "inline-block", backgroundColor: this.props.setting.color, borderColor: "white", borderStyle: "solid", borderWidth: "1px"}}></div>
                 </div>
-                <div><u>Sender</u>: {this.props.setting.name}</div>
+                <div>Message: {this.props.setting.name}</div>
             </div>
         )
     }

@@ -21,18 +21,18 @@ class FormContents extends React.Component {
         if (type === 0) {
           this.props.sendFormCallback(
               this.props.activeForm,
-              this.name.current.value === "" ? "" : this.name.current.value
+              this.name.current.value === "" ? " " : this.name.current.value
           );
         }else if (type === 1) {
           this.props.sendFormCallback(
               this.props.activeForm, 
-              this.name.current.value === "" ? "" : this.name.current.value,
+              this.name.current.value === "" ? " " : this.name.current.value,
               this.color.current.value.toUpperCase()
           );
         }else if (type === 2) {
           this.props.sendFormCallback(
             this.props.activeForm,
-            this.name.current.value === "" ? "" : this.name.current.value,
+            this.name.current.value === "" ? " " : this.name.current.value,
             null,
             fadeType
           )
@@ -109,30 +109,21 @@ class FormContents extends React.Component {
             </Row>
             <Container>
               <Row>
-                <Col s={1}/>
-                <Col s={1}/>
-                <Col s={3}>
                   <Button sx={{ m: 0.5 }} style={{backgroundColor: "#10131a", borderStyle: "solid", borderWidth: "1px"}} 
                     waves="green" 
                     onClick={() => this.formSubmission(2, 0)}>
                     Rainbow
                   </Button>
-                </Col>
-                <Col s={3}>
                   <Button sx={{ m: 0.5 }} style={{backgroundColor: "#10131a", borderStyle: "solid", borderWidth: "1px"}} 
                     waves="green" 
                     onClick={() => this.formSubmission(2, 1)}>
                     Cool
                   </Button>
-                </Col>
-                <Col s={3}>
                   <Button  style={{backgroundColor: "#10131a", borderStyle: "solid", borderWidth: "1px"}} 
                     waves="green" 
                     onClick={() => this.formSubmission(2, 2)}>
                     Warm
                   </Button>
-                </Col>
-                <Col s={1}/>
               </Row>
             </Container>
         </div>
@@ -143,7 +134,7 @@ class FormContents extends React.Component {
         return(
             <div className="FormContents">
                 <Row>
-                    <h5>Form submitted!</h5>
+                    <h5>leds sent!</h5>
                 </Row>
                 <Row>
                     <h6>Give a few second for the LEDs settings to update</h6>
