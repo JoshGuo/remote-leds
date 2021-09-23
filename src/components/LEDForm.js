@@ -87,22 +87,22 @@ class LEDForm extends React.Component {
                 <Row>
                     <Col s={3}>
                         <Button style={this.state.activeForm === -1 ? clickedButton : unclickedButton} waves="light" onClick={() => this.changeForm(-1)}>
-                            {window.innerWidth > 400 ? "Turn Off" : "1"}
+                            {window.innerWidth > 400 ? "Off" : "1"}
                         </Button>
                     </Col>
                     <Col s={3}>
                         <Button style={this.state.activeForm === 0 ? clickedButton : unclickedButton} waves="light" onClick={() => this.changeForm(0)}>
-                            {window.innerWidth > 400 ? "Set Color" : "2"}
+                            {window.innerWidth > 400 ? "Solid Color" : "2"}
                         </Button>
                     </Col>
                     <Col s={3}>
                         <Button style={this.state.activeForm === 1 ? clickedButton : unclickedButton} waves="light" onClick={() => this.changeForm(1)}>
-                            {window.innerWidth > 400 ? "Rainbow" : "3"}
+                            {window.innerWidth > 400 ? "Fade" : "3"}
                         </Button>
                     </Col>
                     <Col s={3}>
                         <Button style={this.state.activeForm === 2 ? clickedButton : unclickedButton} waves="light" onClick={() => this.changeForm(2)}>
-                            {window.innerWidth > 400 ? "Flash" : "4"}
+                            {window.innerWidth > 400 ? "Strobe" : "4"}
                         </Button>
                     </Col>
                 </Row>

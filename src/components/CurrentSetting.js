@@ -7,7 +7,7 @@ class CurrentSetting extends React.Component {
         super();
         this.currentSettingCSS = {
             margin: "2rem auto",
-            borderColor: "lightblue",
+            borderColor: "white",
             backgroundColor: "#10131a",
             borderStyle: "solid",
             borderWidth: "3px",
@@ -32,8 +32,8 @@ class CurrentSetting extends React.Component {
     renderOff = () => {
         return (
             <div>
-                <div><u>Mode</u>: Off</div>
-                <div><u>Sender</u>: {this.props.setting.name}</div>
+                <div>Mode: Off</div>
+                <div>Sender: {this.props.setting.name}</div>
             </div>
         );
     }
@@ -43,10 +43,10 @@ class CurrentSetting extends React.Component {
             <div>
                 <div><u>Mode</u>: Solid Color</div>
                 <div style={{display: "inline-block"}}>
-                    <u>Color</u>: 
+                    Color: 
                     <div style={{margin: "0 5px", width: "15px", height: "15px", display: "inline-block", backgroundColor: this.props.setting.color, borderColor: "white", borderStyle: "solid", borderWidth: "1px"}}></div>
                 </div>
-                <div><u>Sender</u>: {this.props.setting.name}</div>
+                <div>Sender: {this.props.setting.name}</div>
             </div>
         )
     }
@@ -54,8 +54,8 @@ class CurrentSetting extends React.Component {
     renderFade = () => {
         return (
             <div>
-                <div><u>Mode</u>: Rainbow Fade</div>
-                <div><u>Sender</u>: {this.props.setting.name}</div>
+                <div>Mode: Rainbow Fade</div>
+                <div>Message: {this.props.setting.name}</div>
             </div>
         )
     }
@@ -77,7 +77,7 @@ class CurrentSetting extends React.Component {
         return (
             <div style={this.currentSettingCSS}>
                 <Row style={{margin: ".5rem"}}>
-                    <h6>---- Current Setting ----</h6>    
+                    <h6>Current Setting</h6>    
                 </Row>
                 <Row>
                     {this.renderSettings()}       

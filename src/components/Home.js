@@ -6,6 +6,13 @@ import CurrentSetting from './CurrentSetting';
 import LEDForm from './LEDForm';
 import Footer from './Footer';
 
+const styles = {
+  header: {
+    backgroundColor: '#10131a',
+    fontSize: 'calc(25pt + (50 - 25) * ((100vw - 300px) / (1920 - 300)))'
+  }
+}
+
 class Home extends React.Component {
     constructor() {
         super();
@@ -37,16 +44,16 @@ class Home extends React.Component {
     render() {
         return (
             <div className="Home">
-                <Container>
-                    <div className="Header">
-                        <div style={{display:"inline-block"}}>
-                            Change my LEDs :&gt;
-                        </div>
-                    </div>
-                    <CurrentSetting isLoading={this.state.loadingCurr} setting={this.state.currentMode}/>
-                    <LEDForm/>
-                </Container>
-                <Footer/>
+              <div style={styles.header}>
+                <div style={{display:"inline-block"}}>
+                  led stuff
+                </div>
+              </div>
+              <Container>
+                <CurrentSetting isLoading={this.state.loadingCurr} setting={this.state.currentMode}/>
+                <LEDForm/>
+              </Container>
+              <Footer/>
             </div>
         );
     }

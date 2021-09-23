@@ -1,5 +1,5 @@
 import React from 'react';
-import {Button, Row, Box} from 'react-materialize';
+import {Button, Row, Col, Container} from 'react-materialize';
 import '../css/FormContents.css'
 
 class FormContents extends React.Component {
@@ -7,10 +7,10 @@ class FormContents extends React.Component {
         super(props);
 
         this.descriptions = [
-            "Turns off the lights",
-            "Sets the lights to the specified color",
-            "Sets the lights to a rainbow fade",
-            "Sets the lights to flash the specified color (AKA wake me up in the middle of the night)."
+            "turn off the lights",
+            "set the lights to a specific color",
+            "a nice gradient of colors",
+            "do not use this one"
         ]
 
         this.name = React.createRef();
@@ -21,18 +21,18 @@ class FormContents extends React.Component {
         if (type === 0) {
           this.props.sendFormCallback(
               this.props.activeForm,
-              this.name.current.value === "" ? "Anon" : this.name.current.value
+              this.name.current.value === "" ? "" : this.name.current.value
           );
         }else if (type === 1) {
           this.props.sendFormCallback(
               this.props.activeForm, 
-              this.name.current.value === "" ? "Anon" : this.name.current.value,
+              this.name.current.value === "" ? "" : this.name.current.value,
               this.color.current.value.toUpperCase()
           );
         }else if (type === 2) {
           this.props.sendFormCallback(
             this.props.activeForm,
-            this.name.current.value === "" ? "Anon" : this.name.current.value,
+            this.name.current.value === "" ? "" : this.name.current.value,
             null,
             fadeType
           )
@@ -46,7 +46,7 @@ class FormContents extends React.Component {
             case -1: return this.renderGenericForm();
             case 0: return this.renderColorPickerForm();
             case 1: return this.renderFadeForm();
-            case 2: return this.renderColorPickerForm();
+            case 2: return this.renderGenericForm();
             default: return <p>There has been an error</p>
         }
     }
@@ -60,7 +60,7 @@ class FormContents extends React.Component {
                     <h6>{this.descriptions[index]}</h6>
                 </Row>
                 <Row>
-                    Name: <input style={{margin: "0 1rem", width: "25%", color: "white"}} ref={this.name} type="text" placeholder="Anonymous" defaultValue=""/> 
+                    Message: <input style={{margin: "0 1rem", width: "25%", color: "white"}} ref={this.name} type="text" placeholder="hi" defaultValue=""/> 
                 </Row>
                 <Row>
                     <Button style={{backgroundColor: "#10131a", borderStyle: "solid", borderWidth: "1px"}} 
@@ -81,7 +81,7 @@ class FormContents extends React.Component {
                     <h6>{this.descriptions[index]}</h6>
                 </Row>
                 <Row>
-                    Name: <input style={{margin: "0 1rem", width: "25%", color: "white"}} ref={this.name} type="text" placeholder="Anonymous" defaultValue=""/> 
+                    Message: <input style={{margin: "0 1rem", width: "25%", color: "white"}} ref={this.name} type="text" placeholder="colors" defaultValue=""/> 
                 </Row>
                 <Row>
                     Color: <input style={{margin: "0 1rem"}} ref={this.color} type="color" defaultValue="#FFFFFF"/> 
@@ -105,25 +105,36 @@ class FormContents extends React.Component {
                 <h6>{this.descriptions[index]}</h6>
             </Row>
             <Row>
-                Name: <input style={{margin: "0 1rem", width: "25%", color: "white"}} ref={this.name} type="text" placeholder="Anonymous" defaultValue=""/> 
+                Message: <input style={{margin: "0 1rem", width: "25%", color: "white"}} ref={this.name} type="text" placeholder="rainbow stuff" defaultValue=""/> 
             </Row>
-            <Row>
-              <Button sx={{ m: 0.5 }} style={{backgroundColor: "#10131a", borderStyle: "solid", borderWidth: "1px"}} 
-                waves="green" 
-                onClick={() => this.formSubmission(2, 0)}>
-                Full Rainbow
-              </Button>
-              <Button sx={{ m: 0.5 }} style={{backgroundColor: "#10131a", borderStyle: "solid", borderWidth: "1px"}} 
-                waves="green" 
-                onClick={() => this.formSubmission(2, 1)}>
-                Cool Fade
-              </Button>
-              <Button  style={{backgroundColor: "#10131a", borderStyle: "solid", borderWidth: "1px"}} 
-                waves="green" 
-                onClick={() => this.formSubmission(2, 2)}>
-                Warm Fade
-              </Button>
-            </Row>
+            <Container>
+              <Row>
+                <Col s={1}/>
+                <Col s={1}/>
+                <Col s={3}>
+                  <Button sx={{ m: 0.5 }} style={{backgroundColor: "#10131a", borderStyle: "solid", borderWidth: "1px"}} 
+                    waves="green" 
+                    onClick={() => this.formSubmission(2, 0)}>
+                    Rainbow
+                  </Button>
+                </Col>
+                <Col s={3}>
+                  <Button sx={{ m: 0.5 }} style={{backgroundColor: "#10131a", borderStyle: "solid", borderWidth: "1px"}} 
+                    waves="green" 
+                    onClick={() => this.formSubmission(2, 1)}>
+                    Cool
+                  </Button>
+                </Col>
+                <Col s={3}>
+                  <Button  style={{backgroundColor: "#10131a", borderStyle: "solid", borderWidth: "1px"}} 
+                    waves="green" 
+                    onClick={() => this.formSubmission(2, 2)}>
+                    Warm
+                  </Button>
+                </Col>
+                <Col s={1}/>
+              </Row>
+            </Container>
         </div>
     );
     }
